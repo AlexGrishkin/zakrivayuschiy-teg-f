@@ -345,8 +345,6 @@
 .footer_button {
   position: relative;
   background-color: var(--themes-background);
-  inline-size: 100%;
-  padding: 0;
   font-size: 14px;
   display: inline-flex;
   padding: 15px 16px;
