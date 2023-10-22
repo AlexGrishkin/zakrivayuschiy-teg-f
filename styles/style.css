@@ -56,6 +56,7 @@
 .header_title-logo {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   margin-block-end: 20px;
+  text-decoration: none;
 }
 
 .header_title {
@@ -92,6 +93,7 @@
   content: "▶";
   position: absolute;
   inset-inline-start: -20px;
+  inset-block-start: 0;
   animation-name: translate;
   animation-duration: 0.5s;
   animation-direction: alternate;
@@ -99,7 +101,8 @@
   animation-iteration-count: infinite;
 }
 
-.theme-menu__button:focus-visible {
+.theme-menu__button:focus-visible,
+.theme-menu__button:focus {
   opacity: 0.6;
   transition: opacity 0.3s ease;
   outline: none;
@@ -108,12 +111,6 @@
 .theme-menu__button:hover {
   opacity: 0.6;
   transition: opacity 0.3s ease;
-}
-
-.theme-menu__button:focus {
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-  outline: none;
 }
 
 .theme-menu__button::after {
@@ -139,7 +136,8 @@
 
 .article_container {
   inline-size: 100%;
-  margin-block-end: 25px;
+  block-size: 100%;
+  margin: 0 0 26px 0;
   position: relative;
   aspect-ratio: 1/1;
 }
@@ -169,6 +167,7 @@
 .text_content {
   margin-inline-start: 25px;
   margin-inline-end: 25px;
+  line-height: 116.667%;
 }
 
 .text_content-decoration {
@@ -177,11 +176,17 @@
 }
 
 .text_content:first-of-type {
-  margin-block-end: 27px;
+  margin-block-end: 26.3px;
 }
 
 .text_content:last-of-type {
-  margin-block-end: 25px;
+  margin-block-end: 26px;
+}
+
+@media (width > 375px) {
+  .text_content:last-of-type {
+    margin-block-end: 25.5px;
+  }
 }
 
 .buttons_container {
@@ -193,27 +198,32 @@
   gap: 6px;
 }
 
-.card__like-button {
-  position: relative;
+.button_style {
   border: 2px solid var(--text-color, #000);
   padding: 0;
   background-color: transparent;
   cursor: pointer;
-  inline-size: 130px;
-  block-size: 38px;
-  font-size: 14px;
   font-family: var(--accent-font);
 }
 
+.card__like-button {
+  position: relative;
+  inline-size: 130px;
+  block-size: 38px;
+  font-size: 14px;
+}
+
 .card__like-button:focus-visible,
-.footer_button:focus-visible {
+.footer_button:focus-visible,
+.dialog_button:focus-visible {
   outline: none;
-  box-shadow: 2px 2px 0px 0px #000;
+  box-shadow: 2px 2px 0px 0px var(--text-color);
   transition: box-shadow 0.3s ease;
 }
 
 .card__like-button::after,
-.footer_button::after {
+.footer_button::after,
+.dialog_button::after {
   position: absolute;
   content: " ";
   display: block;
@@ -227,22 +237,17 @@
 }
 
 .card__like-button:hover::after,
-.footer_button:hover::after {
+.footer_button:hover::after,
+.dialog_button:hover::after {
   transform: scaleX(1);
 }
 
 .card__like-button:hover .button__text,
-.footer_button:hover .button__text {
+.footer_button:hover .button__text,
+.footer_button:hover svg,
+.dialog_button:hover .button__text {
   position: relative;
   z-index: 1;
-  color: var(--mix-blend-color);
-  mix-blend-mode: difference;
-  transition: color 0s ease;
-}
-
-.footer_button:hover svg {
-  position: relative;
-  z-index: 2;
   color: var(--mix-blend-color);
   mix-blend-mode: difference;
   transition: color 1s ease;
@@ -340,12 +345,9 @@
 .footer_button {
   position: relative;
   background-color: var(--themes-background);
-  border: 2px solid var(--text-color, #000);
   inline-size: 100%;
   padding: 0;
-  cursor: pointer;
   font-size: 14px;
-  font-family: var(--accent-font);
   display: inline-flex;
   padding: 15px 16px;
   flex-wrap: wrap;
@@ -370,6 +372,7 @@
 
 .dialog_content {
   position: fixed;
+  inset: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -378,14 +381,15 @@
   gap: 30px;
   inline-size: clamp(21.3125rem, 20.9604rem + 1.5023vw, 22.3125rem);
   padding: 32px 42px 32px 42px;
+  color: var(--text-color);
 }
 
-dialog:not([open]) {
+.dialog_content:not([open]) {
   pointer-events: none;
   opacity: 0;
 }
 
-dialog::backdrop {
+.dialog_content::backdrop {
   opacity: 0.75;
   background-color: #000;
 }
@@ -404,13 +408,29 @@ dialog::backdrop {
 }
 
 .dialog_button {
+  position: relative;
   margin-block-end: 0;
+  color: var(--text-color);
+  inline-size: 100%;
+  block-size: 38px;
 }
 
 .dialog_text {
   font-size: 14px;
   font-family: var(--accent-font);
+  color: var(--text-color);
   text-transform: uppercase;
+  line-height: 150%;
+}
+
+@media (width >375px) {
+  .dialog_content {
+    padding: 31.5px;
+  }
+
+  .dialog_text {
+    padding-inline-end: 10px;
+  }
 }
 
 .image1_filter {
