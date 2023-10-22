@@ -17,4 +17,430 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-color: var(--themes-background);
+  color: var(--text-color);
+  background-image: var(--gradient-color);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: var(--main-font);
+  font-variation-settings: "wght" var(--font-weight);
+  font-size: 18px;
+}
+
+.main_content {
+  margin-block-end: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.header {
+  margin: 100px 0 100px 0;
+  font-family: var(--accent-font);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem)
+    clamp(0.875rem, -1.4688rem + 10vw, 7.53125rem) 25px;
+}
+
+.content_section {
+  margin-left: auto;
+  margin-right: auto;
+  inline-size: min(100%, 700px);
+  background-color: var(--themes-background);
+  border: 2px solid var(--text-color, #000);
+}
+
+.header_title-logo {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  margin-block-end: 20px;
+}
+
+.header_title {
+  text-transform: uppercase;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  margin-block-end: 22px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: start;
+  margin-inline-start: 21px;
+}
+
+.theme-menu__button {
+  position: relative;
+  border: transparent;
+  font-size: 14px;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  inset-inline-start: -20px;
+  animation-name: translate;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  outline: none;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:focus {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  outline: none;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  block-size: 2px;
+  margin-block-start: -1px;
+  background-color: currentColor;
+  transition: transform 0.3s ease;
+  transform: scale(0);
+  transform-origin: 0 0;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.article_title {
+  font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-title);
+  padding: 5px 10px 5px 10px;
+}
+
+.article_container {
+  inline-size: 100%;
+  margin-block-end: 25px;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.article_label {
+  position: absolute;
+  font-size: 14px;
+  font-family: var(--accent-font);
+  top: 26px;
+  right: clamp(0.6875rem, 0.3794rem + 1.3146vw, 1.5625rem);
+  text-align: right;
+  color: var(--text-color);
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--themes-background);
+  font-weight: 400;
+}
+
+.article_image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.text_content {
+  margin-inline-start: 25px;
+  margin-inline-end: 25px;
+}
+
+.text_content-decoration {
+  margin-inline-start: 25px;
+  margin-inline-end: 30px;
+}
+
+.text_content:first-of-type {
+  margin-block-end: 27px;
+}
+
+.text_content:last-of-type {
+  margin-block-end: 25px;
+}
+
+.buttons_container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-inline-end: 25px;
+  margin-block-end: 25px;
+  gap: 6px;
+}
+
+.card__like-button {
+  position: relative;
+  border: 2px solid var(--text-color, #000);
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  inline-size: 130px;
+  block-size: 38px;
+  font-size: 14px;
+  font-family: var(--accent-font);
+}
+
+.card__like-button:focus-visible,
+.footer_button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0px 0px #000;
+  transition: box-shadow 0.3s ease;
+}
+
+.card__like-button::after,
+.footer_button::after {
+  position: absolute;
+  content: " ";
+  display: block;
+  block-size: 100%;
+  inline-size: 100%;
+  background-color: currentColor;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  inset: 0;
+}
+
+.card__like-button:hover::after,
+.footer_button:hover::after {
+  transform: scaleX(1);
+}
+
+.card__like-button:hover .button__text,
+.footer_button:hover .button__text {
+  position: relative;
+  z-index: 1;
+  color: var(--mix-blend-color);
+  mix-blend-mode: difference;
+  transition: color 0s ease;
+}
+
+.footer_button:hover svg {
+  position: relative;
+  z-index: 2;
+  color: var(--mix-blend-color);
+  mix-blend-mode: difference;
+  transition: color 1s ease;
+}
+
+.card__icon-button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  inline-size: 39px;
+  block-size: 34px;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--text-color);
+  transition: outline 0.3s ease;
+}
+
+.like-icon {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+}
+
+.like-icon .core {
+  transition: fill 0.3s 0.03s linear;
+  fill: transparent;
+}
+
+.like-icon:hover .core {
+  fill: var(--countor-color);
+  transition: fill 0.3s 0s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--filling-color);
+  transition: fill 0.3s 0s linear;
+}
+
+.like-icon .main-body {
+  transition: fill 0.3s linear;
+  fill: transparent;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--countor-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--filling-color);
+  transition: fill 0.3s 0s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center center;
+  animation: heart-animation 0.3s 0.1s ease-in alternate 2;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-animation 0.3s 0.3s ease-in alternate;
+}
+
+.like-icon .contour {
+  transition: fill 0.1s linear;
+}
+
+.footer {
+  border: none;
+  background-color: transparent;
+  inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
+  margin-block-end: 102px;
+}
+
+.footer_button {
+  position: relative;
+  background-color: var(--themes-background);
+  border: 2px solid var(--text-color, #000);
+  inline-size: 100%;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: var(--accent-font);
+  display: inline-flex;
+  padding: 15px 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.footer_svg {
+  inline-size: 28px;
+  block-size: 28px;
+}
+
+@media (width > 375px) {
+  .footer_svg {
+    inline-size: 21px;
+    block-size: 21px;
+  }
+}
+
+.dialog_content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  inline-size: clamp(21.3125rem, 20.9604rem + 1.5023vw, 22.3125rem);
+  padding: 32px 42px 32px 42px;
+}
+
+dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+dialog::backdrop {
+  opacity: 0.75;
+  background-color: #000;
+}
+
+.dialog_container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+.dialog_container svg {
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.dialog_button {
+  margin-block-end: 0;
+}
+
+.dialog_text {
+  font-size: 14px;
+  font-family: var(--accent-font);
+  text-transform: uppercase;
+}
+
+.image1_filter {
+  filter: contrast(75%);
+}
+
+.image2_filter {
+  filter: brightness(75%);
+}
+
+.image3_filter {
+  filter: blur(1px);
+}
+
+.image4_filter {
+  filter: saturate(110%);
+}
+
+.image5_filter {
+  filter: grayscale(0.5);
+}
+
+.image6_filter {
+  filter: hue-rotate(-90deg);
+}
+
+.image7_filter {
+  filter: sepia(100%);
+}
+
+.image8_filter {
+  filter: contrast(75%) saturate(110%) blur(1px);
 }
